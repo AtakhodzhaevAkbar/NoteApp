@@ -21,8 +21,8 @@
         android:layout_marginStart="250dp"
         />
     <Button
-        android:visibility="gone"
-        style="@style/btnBeggin"
+        android:visibility="visible"
+        style="@style/btnBegin"
         android:id="@+id/onBtnBeggin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
