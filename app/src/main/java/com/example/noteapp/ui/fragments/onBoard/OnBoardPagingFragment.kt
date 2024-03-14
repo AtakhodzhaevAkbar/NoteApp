@@ -39,7 +39,7 @@ class OnBoardPagingFragment : Fragment() {
                 animationView.playAnimation()
             }
             2->{
-                onTxt.text="Куча фишек и интересных фишек"
+                onTxt.text="Куча функций и интересных фишек"
                 thirdDot.setImageResource(R.drawable.dot_orange)
                 animationView.setAnimation("animation_third.json")
                 animationView.playAnimation()
