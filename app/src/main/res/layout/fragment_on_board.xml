@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.onBoard.OnBoardFragment">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_Pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <Button
+        style="@style/btnStyle"
+        app:backgroundTint="@color/black"
+        android:id="@+id/onBtnSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnSkip"
+        android:layout_gravity="top"
+        android:layout_marginStart="250dp"
+        />
+    <Button
+        android:visibility="gone"
+        style="@style/btnBeggin"
+        android:id="@+id/onBtnBeggin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnBeggin"
+        android:backgroundTint="#000000"
+        android:textSize="30sp"
+        android:textColor="#878787"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"/>
+</FrameLayout>
