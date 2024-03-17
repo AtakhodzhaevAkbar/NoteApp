@@ -3,8 +3,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.note.NoteFragment">
+    tools:context=".ui.fragments.note.NoteFragment"
+    android:background="@color/black">
+    <FrameLayout
+        android:background="#151515"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notes"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            />
 
+        <com.google.android.material.button.MaterialButton
+            style="@style/RoundButtonStyle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="170dp"/>
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ed_shape"
+            android:layout_gravity="center"
+            android:layout_marginStart="170dp"/>
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp">
+        <EditText
+            android:background="@drawable/ed_shape"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:drawableStart="@drawable/loop"
+            android:hint="@string/searchBar"
+            android:textColorHint="#4A4A4A"
+            android:drawablePadding="10dp"/>
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="110dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus"
+            android:textSize="50sp"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="300dp"
+            android:layout_marginBottom="20dp"
+            android:background="#FFCB63"
+            android:textColor="@color/white"/>
+
+    </FrameLayout>
 
 
 </FrameLayout>

@@ -5,4 +5,7 @@
     <string name="btnSkip">Пропустить</string>
     <string name="btnBeggin">Начать работу</string>
     <string name="test">Test</string>
+    <string name="notes">Заметки</string>
+    <string name="searchBar">Поиск Заметок</string>
+    <string name="plus">+</string>
 </resources>

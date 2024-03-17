@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.noteapp.R
 import com.example.noteapp.databinding.FragmentOnBoardPagingBinding
+import com.example.noteapp.utils.PreferenceHelper
 
 
 class OnBoardPagingFragment : Fragment() {
@@ -23,6 +24,9 @@ class OnBoardPagingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
+        if(requireArguments().getInt(ARG_ONBOARD_POSITION)==2){
+            PreferenceHelper(requireContext()).isOnBoardShown=true
+        }
     }
     private fun initialize()=with(binding){
         when(requireArguments().getInt(ARG_ONBOARD_POSITION)){
