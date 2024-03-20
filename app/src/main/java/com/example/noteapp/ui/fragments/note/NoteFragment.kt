@@ -5,25 +5,72 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.noteapp.App
 import com.example.noteapp.R
+import com.example.noteapp.data.model.NoteModel
 import com.example.noteapp.databinding.FragmentNoteBinding
-import com.example.noteapp.utils.PreferenceHelper
+import com.example.noteapp.ui.adapter.NoteAdapter
 
 class NoteFragment : Fragment() {
+
     private lateinit var binding: FragmentNoteBinding
+    private var isGridLayout = false
+    private val noteAdapter = NoteAdapter()
+    private val list: ArrayList<NoteModel> = ArrayList()
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentNoteBinding.inflate(inflater,container,false)
+    ): View {
+        binding = FragmentNoteBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnChangeLayout.setOnClickListener {
+            isGridLayout = !isGridLayout
+            changeRecyclerViewLayout()
+        }
+        setupListener()
+        initialize()
+        getData()
+
+
     }
 
 
+    private fun getData() {
+        App().getInstance()?.noteDao()?.getAll()?.observe(viewLifecycleOwner) {
+            noteAdapter.submitList(it)
+        }
+    }
+
+    private fun initialize() {
+        binding.homeRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = noteAdapter
+        }
+    }
+
+    private fun setupListener() {
+        binding.btnChangeScreen.setOnClickListener {
+            findNavController().navigate(R.id.action_noteFragment_to_noteDetailFragment)
+        }
+    }
+
+    private fun changeRecyclerViewLayout() {
+        val layoutManager = if (isGridLayout) {
+            GridLayoutManager(requireContext(), 2)
+        } else {
+            LinearLayoutManager(requireContext())
+        }
+
+        binding.homeRecyclerView.layoutManager = layoutManager
+    }
 }
+

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.note.NoteFragment"
     android:background="@color/black">
     <FrameLayout
@@ -18,16 +19,17 @@
             android:layout_gravity="center"
             />
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/RoundButtonStyle"
+        <Button
+            android:background="@drawable/menu"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginEnd="170dp"/>
         <Button
+            android:id="@+id/btnChangeLayout"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="@drawable/ed_shape"
+            android:background="@drawable/shape"
             android:layout_gravity="center"
             android:layout_marginStart="170dp"/>
     </FrameLayout>
@@ -39,9 +41,9 @@
             android:background="@drawable/ed_shape"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:paddingTop="20dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
@@ -54,16 +56,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="110dp">
-        <Button
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnChangeScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/plus"
-            android:textSize="50sp"
             android:layout_gravity="bottom"
             android:layout_marginStart="300dp"
             android:layout_marginBottom="20dp"
-            android:background="#FFCB63"
-            android:textColor="@color/white"/>
+            android:background="#FFC34B"
+            app:srcCompat="@android:drawable/ic_input_add"
+            android:textColor="@color/white"
+            android:textSize="50sp" />
 
     </FrameLayout>
 

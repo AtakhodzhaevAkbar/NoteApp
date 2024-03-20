@@ -47,7 +47,7 @@ class OnBoardFragment : Fragment() {
 
         binding.onBtnBeggin.setOnClickListener {
             preferenceHelper.isOnBoardShown = true
-            navigateToMainScreen()
+            findNavController().navigate(OnBoardFragmentDirections.actionOnBoardFragmentToNoteFragment())
         }
 
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

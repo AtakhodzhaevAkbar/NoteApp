@@ -23,7 +23,10 @@ class OnBoardPagingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initialize()
+        if(arguments!=null){
+            val position=requireArguments().getInt(ARG_ONBOARD_POSITION)
+            initialize()
+        }
         if(requireArguments().getInt(ARG_ONBOARD_POSITION)==2){
             PreferenceHelper(requireContext()).isOnBoardShown=true
         }

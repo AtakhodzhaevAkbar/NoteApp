@@ -8,4 +8,7 @@
     <string name="notes">Заметки</string>
     <string name="searchBar">Поиск Заметок</string>
     <string name="plus">+</string>
+    <string name="title">Введите тему</string>
+    <string name="text">Введите текст</string>
+    <string name="description">Работы с проектом, сделать домашку, убраться и...</string>
 </resources>
