@@ -15,10 +15,10 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-
 class NoteDetailFragment : Fragment() {
     private lateinit var binding: FragmentNoteDetailBinding
     private var selectedColor: Int = 0
+    private var noteId: Long = -1L
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +30,15 @@ class NoteDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        noteId = arguments?.getLong("noteId", -1L) ?: -1L
+        if (noteId != -1L) {
+            val existingNote = App().getInstance()?.noteDao()?.getNoteById(noteId)
+            existingNote?.let { note ->
+                binding.titleET.setText(note.title)
+                binding.descriptionET.setText(note.description)
+                selectedColor = Color.parseColor(note.color)
+            }
+        }
         binding.colorSelectionRadioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.btnColorGray -> selectedColor = Color.parseColor("#191818")
@@ -37,8 +46,6 @@ class NoteDetailFragment : Fragment() {
                 R.id.btnColorBrown -> selectedColor = Color.parseColor("#571818")
                 else -> selectedColor = Color.BLACK
             }
-
-
         }
 
         val currentDate = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(Date())
@@ -58,14 +65,25 @@ class NoteDetailFragment : Fragment() {
             val color = if (selectedColor != 0) "#" + Integer.toHexString(selectedColor)
                 .substring(2) else "#000000"
 
-            App().getInstance()?.noteDao()?.insertNote(
-                NoteModel(
-                    title, description, time, date, color
+            if (noteId != -1L) {
+                val updatedNote = NoteModel(
+                    title = title,
+                    description = description,
+                    time = time,
+                    date = date,
+                    color = color
                 )
-            )
-            findNavController().navigateUp()
+                updatedNote.id = noteId.toLong()
+                App().getInstance()?.noteDao()?.updateNote(updatedNote)
+            } else {
+                App().getInstance()?.noteDao()?.insertNote(
+                    NoteModel(
+                        title, description, time, date, color
+                    )
+                )
+            }
+
+            findNavController().navigate(R.id.action_noteDetailFragment_to_noteFragment)
         }
     }
-
-
 }

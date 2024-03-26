@@ -8,14 +8,8 @@ import com.example.noteapp.utils.PreferenceHelper
 class App : Application() {
     companion object {
         var appDatabase: AppDatabase? = null
-    }
 
-    override fun onCreate() {
-        super.onCreate()
-        val sharedPreferences = PreferenceHelper(this)
-        getInstance()
     }
-
     fun getInstance(): AppDatabase? {
         if (appDatabase == null) {
             appDatabase = applicationContext?.let {
@@ -28,4 +22,11 @@ class App : Application() {
         }
         return appDatabase
     }
+
+    override fun onCreate() {
+        super.onCreate()
+        val sharedPreferences = PreferenceHelper(this)
+        getInstance()
+    }
+
 }

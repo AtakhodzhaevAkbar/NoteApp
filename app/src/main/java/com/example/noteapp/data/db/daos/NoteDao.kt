@@ -6,16 +6,22 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.example.noteapp.data.model.NoteModel
 
 @Dao
 interface NoteDao {
     @Query("SELECT * FROM noteModel")
     fun getAll(): LiveData<List<NoteModel>>
+    @Query("SELECT * FROM noteModel WHERE id = :id")
+    fun getNoteById(id: Long): NoteModel?
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertNote(noteModel: NoteModel)
 
     @Delete
     fun deleteNote(noteModel: NoteModel)
+    @Update
+    fun updateNote(noteModel: NoteModel)
 }
